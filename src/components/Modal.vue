@@ -2,9 +2,6 @@
     <v-container>
         <d-forms>
         </d-forms>
-                    <v-btn color="orange" class="mr-4 text-capitalize" @click="reset">
-                Limpar
-            </v-btn>
     </v-container>
 </template>
 

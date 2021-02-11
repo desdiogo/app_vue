@@ -48,7 +48,7 @@
         </v-dialog>
         <v-dialog v-model="dialog" width="500">
             <v-card>
-                <v-card-title class="headline grey lighten-2">
+                <v-card-title class="headline">
                     {{ message }}
                 </v-card-title>
 
@@ -60,14 +60,22 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
+        <v-dialog v-model="modal" width="500">
+                <v-card>
+                    <d-modal></d-modal>
+                </v-card>
+        </v-dialog>
     </v-container>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import dModal from "@/components/Modal";
+
 export default {
+    components: {dModal},
     data() {
         return {
-            peoples: [],
             headers: [
                 {
                     text: "Nome Completo",
@@ -86,6 +94,7 @@ export default {
             messageLoading: "Carregando Dados",
             dialogDelete: false,
             dialog: false,
+            modal: false,
             index: -1,
             itemSelected: null,
         };
@@ -133,14 +142,22 @@ export default {
         },
 
         inicial() {
-            this.overlay = true;
-            const headers = { "Content-Type": "application/json" };
-            fetch("https://app.desdiogo.com/api/people", { headers })
-                .then((response) => response.json())
-                .then((data) => (this.peoples = data))
-                .then(() => (this.overlay = false));
+            // this.overlay = true;
+            // const headers = { "Content-Type": "application/json" };
+            // fetch("https://app.desdiogo.com/api/people", { headers })
+            //     .then((response) => response.json())
+            //     .then((data) => (this.peoples = data))
+            this.$store.dispatch('loadPeoples')
+                // .then(() => (this.overlay = false));
         },
+        editItem(item) {
+            this.modal = true
+            console.log(item)
+        }
     },
+    computed: mapState([
+        'peoples'
+    ]),
 };
 </script>
 

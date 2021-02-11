@@ -9,7 +9,6 @@
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav class="ml-auto">
-                    <b-nav-form>
                         <router-link
                             to="/form"
                             v-slot="{ navigate, href, route }"
@@ -28,7 +27,6 @@
                                 route.name
                             }}</b-nav-item>
                         </router-link>
-                    </b-nav-form>
                 </b-navbar-nav>
             </b-collapse>
         </b-navbar>

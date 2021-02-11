@@ -170,7 +170,7 @@ export default {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(this.form),
             };
-            fetch("http://localhost:8000/api/people", requestOptions)
+            fetch("https://app.desdiogo.com/api/people", requestOptions)
                 .then((response) => response.json())
                 .then((data) => (this.message = data.msg))
                 .then(() => {

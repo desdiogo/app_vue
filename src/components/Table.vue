@@ -108,7 +108,7 @@ export default {
                 headers: { "Content-Type": "application/json" },
             };
             fetch(
-                `http://localhost:8000/api/people/${this.itemSelected}`,
+                `https://app.desdiogo.com/api/people/${this.itemSelected}`,
                 requestOptions
             )
                 .then((response) => response.json())
@@ -135,7 +135,7 @@ export default {
         inicial() {
             this.overlay = true;
             const headers = { "Content-Type": "application/json" };
-            fetch("http://localhost:8000/api/people", { headers })
+            fetch("https://app.desdiogo.com/api/people", { headers })
                 .then((response) => response.json())
                 .then((data) => (this.peoples = data))
                 .then(() => (this.overlay = false));
